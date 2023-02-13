@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { Component } from "react";
 
@@ -13,27 +12,49 @@ class App extends Component {
   // }
   //para eliminar o constructor podemos utilizar o class field que permite criar atributos na classe sem depender do constructor
 
+  //Aula 014
+  // state = {
+  //   name: "Alessandra Murat",
+  //   counter: 0,
+  // };
+
+  // handlePClick = () => {
+  //   this.setState({ name: "Alessandra Gabriele" });
+  // };
+
+  // handleLinkClick = (event) => {
+  //   event.preventDefault();
+  //   const { counter } = this.state;
+  //   this.setState({ counter: counter + 1 });
+  // };
+
   state = {
-    name: "Alessandra Murat",
-    counter: 0,
-  };
-
-  handlePClick = () => {
-    this.setState({ name: "Alessandra Gabriele" });
-  };
-
-  handleLinkClick = (event) => {
-    event.preventDefault();
-    const { counter } = this.state;
-    this.setState({ counter: counter + 1 });
+    posts: [
+      {
+        id: 1,
+        title: "Título 1",
+        body: "Corpo 1",
+      },
+      {
+        id: 2,
+        title: "Título 2",
+        body: "Corpo 2",
+      },
+      {
+        id: 3,
+        title: "Título 3",
+        body: "Corpo 3",
+      },
+    ],
   };
 
   render() {
     // const name = this.state.name;
-    const { name, counter } = this.state;
+    const { posts } = this.state;
     return (
       <div className="App">
-        <header className="App-header">
+        {/* Aula 014 */}
+        {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p onClick={this.handlePClick}>
             {name} {counter}
@@ -47,7 +68,13 @@ class App extends Component {
           >
             Este é o Link
           </a>
-        </header>
+        </header> */}
+        {posts.map((post) => (
+          <div key={post.id}>
+            <h1>{post.title}</h1>
+            <p>{post.body}</p>
+          </div>
+        ))}
       </div>
     );
   }
